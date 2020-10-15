@@ -1,0 +1,35 @@
+﻿@model WebApp.Models.ReturnBookViewModel
+
+@{
+    ViewData["Title"] = "Aflevere bog";
+}
+
+<h1>Aflevere bog</h1>
+<hr />
+
+@if (Model != null && Model.ButtonClicked)
+{
+    <h4 id="message" style="@(Model.Success ? "color: green;" : "color: red;")"> @(Model.Success ? "Bogen blev afleveret" : "Bogen kunne ikke afleveres")</h4>
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ReturnBookModel">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" name="returnBarcode">
+                <label asp-for="BookBarcode" class="control-label"></label>
+                <input asp-for="BookBarcode" class="form-control" />
+                <span asp-validation-for="BookBarcode" class="text-danger"></span>
+            </div>
+            <div class="form-group" name="returnButton">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+}

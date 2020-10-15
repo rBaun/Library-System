@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DataAccess.Entities.Book>
+
+@{
+    ViewData["Title"] = "SearchBook";
+}
+
+@using (Html.BeginForm("SearchBook", "homecontroller")) {
+    <input type="text" name="searchString" placeholder="Title, Forfatter eller ISBN" />
+    <input type="submit" name="searchButton" value="Søg" />
+}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Forfatter")
+                </th>
+                <th>
+                    @Html.DisplayName("Titel")
+                </th>
+                <th>
+                    @Html.DisplayName("Emneområde")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ISBN)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubjectArea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ISBN)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { isbn = item.ISBN })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
