@@ -4,6 +4,9 @@ There is not going to be put effort into the coding, since this is focused on mo
 
 * Database Indexes
 * Advanced Queries
+* Triggers and Stored Procedures
 * Black Box Testing
 * White Box Testing
 * Test Traceability
+
+The scripts for the MSSQL can be seen in the 'db_scripts' folder.
