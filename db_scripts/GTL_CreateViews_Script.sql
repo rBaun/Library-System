@@ -48,3 +48,8 @@ SELECT
 FROM book AS b
 INNER JOIN copy AS c ON c.book_id = b.id
 INNER JOIN material AS m ON m.id = b.id;
+
+/*Display Person Informations needed for Librarians*/
+CREATE VIEW personInfo AS
+SELECT card_id, firstname, lastname, isprofessor
+FROM person
